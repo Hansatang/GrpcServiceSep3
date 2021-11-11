@@ -12,13 +12,13 @@ using Microsoft.Extensions.Logging;
 
 namespace GrpcService
 {
-    public class GreeterService : BusinessServer.BusinessServerBase
+    public class BusinessServerService : BusinessServer.BusinessServerBase
     {
         private string uri = "http://localhost:8080";
         private readonly HttpClient client;
-        private readonly ILogger<GreeterService> _logger;
+        private readonly ILogger<BusinessServerService> _logger;
 
-        public GreeterService(ILogger<GreeterService> logger)
+        public BusinessServerService(ILogger<BusinessServerService> logger)
         {
             client = new HttpClient();
             _logger = logger;
