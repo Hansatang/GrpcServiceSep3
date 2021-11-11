@@ -35,6 +35,17 @@ namespace GrpcService
                 Message = message
             });
         }
+        
+        public override async Task<Reply> GetNote(Request request, ServerCallContext context)
+        {
+            Console.WriteLine(request);
+            Task<string> stringAsync = client.GetStringAsync(uri + "/NoteList/" + request.Name);
+            string message = await stringAsync;
+            return await Task.FromResult(new Reply
+            {
+                Message = message
+            });
+        }
 
         public override async Task<Reply> PostGroup(Request request, ServerCallContext context)
         {
