@@ -25,18 +25,18 @@ namespace GrpcService
             //HEY
         }
 
-        public override async Task<GroupReply> GetGroup(GroupRequest request, ServerCallContext context)
+        public override async Task<Reply> GetGroup(Request request, ServerCallContext context)
         {
             Console.WriteLine(request);
             Task<string> stringAsync = client.GetStringAsync(uri + "/Group/" + request.Name);
             string message = await stringAsync;
-            return await Task.FromResult(new GroupReply
+            return await Task.FromResult(new Reply
             {
                 Message = message
             });
         }
 
-        public override async Task<GroupReply> PostGroup(GroupRequest request, ServerCallContext context)
+        public override async Task<Reply> PostGroup(Request request, ServerCallContext context)
         {
             HttpContent content = new StringContent(request.Name, Encoding.UTF8, "application/json");
             Console.WriteLine(2);
@@ -46,7 +46,7 @@ namespace GrpcService
             Task<string> stringAsync = client.GetStringAsync(uri + "/Group/" + "5");
             string message = await stringAsync;
             Console.WriteLine(message);
-            return await Task.FromResult(new GroupReply
+            return await Task.FromResult(new Reply
             {
                 Message = message
             });
