@@ -22,6 +22,7 @@ namespace GrpcService
         {
             client = new HttpClient();
             _logger = logger;
+            //HEY
         }
 
         public override async Task<GroupReply> GetGroup(GroupRequest request, ServerCallContext context)
